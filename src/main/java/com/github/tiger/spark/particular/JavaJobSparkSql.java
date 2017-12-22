@@ -1,4 +1,4 @@
-package particular;
+package com.github.tiger.spark.particular;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.SparkContext;
@@ -19,12 +19,11 @@ public class JavaJobSparkSql {
     public static void main(String[] args) throws AnalysisException, IOException {
         SparkConf sparkConf = new SparkConf();
         sparkConf.setMaster("local[*]").setAppName("Job aggregration");
-
         SparkContext sc = new SparkContext(sparkConf);
-        StreamingContext ssc = new StreamingContext(sc, new Duration(10));
 
-        ssc.socketTextStream("localhost", 5200,
-                StorageLevel.MEMORY_AND_DISK());
+        StreamingContext ssc = new StreamingContext(sc, new Duration(10));
+//        ssc.socketTextStream("localhost", 5200,
+//                StorageLevel.MEMORY_AND_DISK());
 
         SparkSession spark = SparkSession
                 .builder()
@@ -41,11 +40,12 @@ public class JavaJobSparkSql {
         String sample = cp + "job.json";
         long start = System.currentTimeMillis();
         Dataset<Row> df = spark.read().json(sample);
+        long records = df.count();
         df.createOrReplaceTempView("job");
         Dataset<Row> sqlDF = spark.sql("SELECT ID, JOB_TYPE, CITY_ID, JOB_NATURE, count(1) " +
                 "FROM job group by ID, JOB_TYPE, CITY_ID, JOB_NATURE");
-        long end = System.currentTimeMillis() - start;
-        System.out.println("records：100K，aggregation time：" + TimeUnit.MILLISECONDS.toSeconds(end) + "s");
+        long elasped = System.currentTimeMillis() - start;
+        System.out.println("records：" + records + "，aggregation time：" + TimeUnit.MILLISECONDS.toSeconds(elasped) + "s");
         List<Row> result = sqlDF.javaRDD().collect();
         int total = 0;
         for (Row row : result) {
