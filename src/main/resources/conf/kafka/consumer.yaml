@@ -1,0 +1,25 @@
+
+### high
+
+bootstrap.servers:
+        "kafka1:9092,kafka2:9092,kafka3:9092"
+
+key.deserializer:
+        "org.apache.kafka.common.serialization.StringDeserializer"
+
+value.deserializer:
+        "org.apache.kafka.common.serialization.StringDeserializer"
+
+group.id:
+        "zpcampus"
+
+session.timeout.ms:
+        "10000"
+
+### medium
+
+enable.auto.commit:
+        "false"
+
+auto.offset.reset:
+        "latest"

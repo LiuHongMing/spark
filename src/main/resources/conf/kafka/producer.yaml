@@ -1,0 +1,17 @@
+
+### high
+
+bootstrap.servers:
+        "kafka1:9092,kafka2:9092,kafka3:9092"
+
+key.serializer:
+        "org.apache.kafka.common.serialization.StringSerializer"
+
+value.serializer:
+        "org.apache.kafka.common.serialization.StringSerializer"
+
+acks: "1"
+
+### medium
+
+linger.ms: "1"
