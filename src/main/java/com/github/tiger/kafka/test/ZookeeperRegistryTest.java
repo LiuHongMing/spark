@@ -19,7 +19,7 @@ public class ZookeeperRegistryTest {
                 "  ],\n" +
                 "  \"CampusRdOpLogs.Exchang.Name\": \"operatelogs.topic\",\n" +
                 "  \"CampusRdOpLogs.Forwarding.Url\": \"http://campusrdiapi.zhaopin.com/api/operationlog/ReceiveOperationLog?_appid=rdiapi\",\n" +
-                "  \"CampusRdOpLogs.Forwarding.Url.Params\": \"source=mqservice&data={msgbody}\",\n" +
+                "  \"CampusRdOpLogs.Forwarding.Url.Params\": \"source=mqservice&data={msgbody}\"" +
                 "}";
 
         registry.createNode("/prod/campusposition.json", config.getBytes());

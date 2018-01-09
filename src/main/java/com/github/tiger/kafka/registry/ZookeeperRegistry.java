@@ -124,9 +124,9 @@ public class ZookeeperRegistry implements Registry {
     @Override
     public void subscribe(URL url) {
         this.url = url;
+        this.watcher = new ZkWatcher(this);
         String path = url.getPath();
         try {
-            this.watcher = new ZkWatcher(this);
             watched(path);
             watchedChildren(path);
         } catch (Exception e) {
