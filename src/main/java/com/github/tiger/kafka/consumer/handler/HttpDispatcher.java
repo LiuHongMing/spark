@@ -1,9 +1,10 @@
 package com.github.tiger.kafka.consumer.handler;
 
-import com.github.tiger.kafka.common.Constants;
-import com.github.tiger.kafka.common.URL;
-import com.github.tiger.kafka.utils.HttpClientUtil;
 import com.google.common.collect.Maps;
+import com.github.tiger.kafka.common.Protocol.HttpMethod;
+import com.github.tiger.kafka.common.URL;
+import com.github.tiger.kafka.config.Constants;
+import com.github.tiger.kafka.utils.HttpClientUtil;
 import org.apache.http.HttpHeaders;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
@@ -13,8 +14,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Map;
-
-import static com.github.tiger.kafka.common.Protocol.HttpMethod;
 
 /**
  * @author liuhongming
@@ -59,7 +58,7 @@ public class HttpDispatcher extends AbstractConsumerHandler<Collection<ConsumerR
         } else if (method == HttpMethod.POST) {
             responseBody = doPost();
         }
-         logger.info("Response: body={}", responseBody);
+        logger.info("Response: body={}", responseBody);
     }
 
     private String doGet() throws URISyntaxException {

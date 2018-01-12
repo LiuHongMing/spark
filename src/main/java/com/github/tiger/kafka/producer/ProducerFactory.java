@@ -1,7 +1,7 @@
 package com.github.tiger.kafka.producer;
 
-import com.github.tiger.kafka.utils.PropertiesUtil;
 import com.google.common.collect.Maps;
+import com.github.tiger.kafka.utils.PropertiesUtil;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 
@@ -22,8 +22,8 @@ public class ProducerFactory {
     private static Properties configs;
 
     static {
-        String yaml = "conf/kafka/producer.yaml";
-        configs = PropertiesUtil.loadYaml(yaml);
+        String conf = "conf/kafka/producer.yaml";
+        configs = PropertiesUtil.loadYaml(conf);
     }
 
 

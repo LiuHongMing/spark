@@ -1,7 +1,7 @@
 package com.github.tiger.kafka.consumer;
 
-import com.github.tiger.kafka.utils.PropertiesUtil;
 import com.google.common.collect.Maps;
+import com.github.tiger.kafka.utils.PropertiesUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -24,8 +24,8 @@ public class ConsumerFactory {
     private static Properties configs;
 
     static {
-        String yaml = "conf/kafka/consumer.yaml";
-        configs = PropertiesUtil.loadYaml(yaml);
+        String conf = "conf/kafka/consumer.yaml";
+        configs = PropertiesUtil.loadYaml(conf);
     }
 
     public static Consumer<String, String> group(String groupId) {

@@ -1,6 +1,7 @@
 package com.github.tiger.kafka.consumer;
 
 import com.google.common.collect.Lists;
+import com.github.tiger.kafka.common.Closeable;
 import org.apache.commons.lang.StringUtils;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -9,8 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -20,7 +19,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  *
  * @author liuhongming
  */
-public class ConsumerClient {
+public class ConsumerClient implements Closeable {
 
     private static final Logger logger = LoggerFactory.getLogger(ConsumerClient.class);
 
@@ -91,9 +90,10 @@ public class ConsumerClient {
         runner.start();
     }
 
+    @Override
     public void close() {
         isClosed = true;
-        logger.info("Close the consumer({}) \n", clientId);
+        logger.info("Close the consumer({})", clientId);
     }
 
     public boolean isClosed() {

@@ -1,8 +1,8 @@
 package com.github.tiger.kafka.broker;
 
-import com.github.tiger.kafka.utils.PropertiesUtil;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.github.tiger.kafka.utils.PropertiesUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.kafka.clients.admin.*;
 
@@ -17,8 +17,8 @@ public class AdminMain {
     private static Properties configs;
 
     static {
-        String yaml = "conf/kafka/broker.yaml";
-        configs = PropertiesUtil.loadYaml(yaml);
+        String conf = "conf/kafka/broker.yaml";
+        configs = PropertiesUtil.loadYaml(conf);
     }
 
     public static void createTopics(AdminClient client, String[] topics, int numPartitions,

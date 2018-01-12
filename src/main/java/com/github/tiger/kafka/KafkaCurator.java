@@ -1,18 +1,13 @@
 package com.github.tiger.kafka;
 
-import com.github.tiger.kafka.common.Constants;
+import com.google.common.base.Joiner;
 import com.github.tiger.kafka.common.URL;
-import com.github.tiger.kafka.consumer.ConsumerMain;
-import com.github.tiger.kafka.consumer.handler.HttpDispatcher;
+import com.github.tiger.kafka.config.Constants;
 import com.github.tiger.kafka.registry.Registry;
 import com.github.tiger.kafka.registry.ZookeeperRegistry;
 import com.github.tiger.kafka.utils.PropertiesUtil;
-import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 import java.io.File;
-import java.util.List;
 import java.util.Properties;
 
 /**
@@ -37,9 +32,10 @@ public class KafkaCurator {
         String path = Joiner.on(File.separator).join(
                 new String[]{"", environment, site}).concat("." + postfix);
 
-        Configuration configuration = new Configuration(new ZookeeperRegistry(
-                namespace, "", ""));
-        configuration.sync(new URL(path));
+        Registry registry = new ZookeeperRegistry(namespace, null, null);
+        URL subscribeUrl = new URL(path);
+        KafkaService service = new KafkaService();
+        service.registry(registry).sync(subscribeUrl);
 
         while (true) {
             synchronized (KafkaCurator.class) {

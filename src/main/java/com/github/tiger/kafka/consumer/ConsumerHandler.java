@@ -1,6 +1,6 @@
 package com.github.tiger.kafka.consumer;
 
-import com.github.tiger.kafka.RecordsFuture;
+import com.github.tiger.kafka.core.RecordsFuture;
 
 /**
  * 描述：Kafka消息的消费操作

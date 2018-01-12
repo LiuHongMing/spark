@@ -20,7 +20,8 @@ public interface Protocol {
         }
 
         public static HttpMethod resolve(String method) {
-            return (method != null ? mappings.get(method) : null);
+            return (method != null ?
+                    mappings.get(method) : null);
         }
 
         public boolean matches(String method) {

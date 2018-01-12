@@ -1,4 +1,4 @@
-package com.github.tiger.kafka;
+package com.github.tiger.kafka.core;
 
 /**
  * @author liuhongming

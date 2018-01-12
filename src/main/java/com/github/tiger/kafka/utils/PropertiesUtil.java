@@ -5,11 +5,8 @@ import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
-import java.util.Enumeration;
 import java.util.Objects;
 import java.util.Properties;
-import java.util.PropertyResourceBundle;
 
 /**
  * @author liuhongming

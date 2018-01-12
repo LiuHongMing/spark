@@ -17,9 +17,9 @@ import java.util.zip.ZipFile;
  *
  * @author liuhongming
  */
-public class FileUtil {
+public class ZipUtil {
 
-    private static final Logger logger = LoggerFactory.getLogger(FileUtil.class);
+    private static final Logger logger = LoggerFactory.getLogger(ZipUtil.class);
 
     private static final int BUFFER_SIZE = 2048;
 

@@ -1,4 +1,4 @@
-package com.github.tiger.kafka.common;
+package com.github.tiger.kafka.config;
 
 /**
  * @author liuhongming
@@ -16,6 +16,5 @@ public class Constants {
     public static final String CONFIG_POSTFIX = "config.postfix";
 
     public static final String DEFAULT_HTTP_DATA_KEY = "data";
-
 
 }

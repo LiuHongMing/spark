@@ -1,16 +1,18 @@
 package com.github.tiger.kafka.registry;
 
 import com.github.tiger.kafka.KafkaCurator;
-import com.github.tiger.kafka.common.Constants;
 import com.github.tiger.kafka.common.URL;
+import com.github.tiger.kafka.config.Constants;
 import com.github.tiger.kafka.listener.NotifyListener;
-import com.github.tiger.kafka.listener.ZkWatcher;
 import org.apache.commons.lang.StringUtils;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.api.ACLProvider;
-import org.apache.curator.framework.recipes.cache.*;
+import org.apache.curator.framework.recipes.cache.NodeCache;
+import org.apache.curator.framework.recipes.cache.NodeCacheListener;
+import org.apache.curator.framework.recipes.cache.PathChildrenCache;
+import org.apache.curator.framework.recipes.cache.PathChildrenCacheListener;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.data.ACL;
@@ -65,7 +67,7 @@ public class ZookeeperRegistry implements Registry {
         init(namespace, schema, auth);
     }
 
-    public void init(String namespace, String schema, String auth) {
+    private void init(String namespace, String schema, String auth) {
         logger.info("Initializing ...");
 
         this.namespace = StringUtils.isNotEmpty(namespace) ? namespace : DEFAULT_NAMESPACE;
