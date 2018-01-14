@@ -1,4 +1,4 @@
-package com.github.tiger.kafka;
+package com.github.tiger.kafka.main;
 
 import com.google.common.base.Joiner;
 import com.github.tiger.kafka.common.URL;

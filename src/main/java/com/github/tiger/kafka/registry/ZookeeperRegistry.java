@@ -1,6 +1,6 @@
 package com.github.tiger.kafka.registry;
 
-import com.github.tiger.kafka.KafkaCurator;
+import com.github.tiger.kafka.main.KafkaCurator;
 import com.github.tiger.kafka.common.URL;
 import com.github.tiger.kafka.config.Constants;
 import com.github.tiger.kafka.listener.NotifyListener;

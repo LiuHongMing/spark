@@ -1,4 +1,4 @@
-package com.github.tiger.kafka;
+package com.github.tiger.kafka.main;
 
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
@@ -27,8 +27,6 @@ public class KafkaService extends MqConfigure {
 
     private boolean isRestart = false;
 
-    private int release = 0;
-
     public KafkaService() {
     }
 
@@ -40,10 +38,9 @@ public class KafkaService extends MqConfigure {
     public void reload() {
         stop(invalidTopic());
         startup(validTopics());
-        isStartup = true;
     }
 
-    private void startup(Map<String, BizEntity> validTopics) {
+    public void startup(Map<String, BizEntity> validTopics) {
         validTopics.forEach((bizName, bizEntity) -> {
             isRestart = false;
 
@@ -75,6 +72,7 @@ public class KafkaService extends MqConfigure {
              */
             versions.put(topic, ver2);
         });
+        isStartup = true;
     }
 
     private void startup(BizEntity bizEntity) {
@@ -95,7 +93,7 @@ public class KafkaService extends MqConfigure {
         ConsumerMain.doReceive(nConsumer, bizName, topicList, dispatchUrl);
     }
 
-    private void stop(Collection<String> invalidTopic) {
+    public void stop(Collection<String> invalidTopic) {
         invalidTopic.forEach(topic -> ConsumerMain.doCancel(topic));
         /**
          * 清空已取消的主题列表
