@@ -8,7 +8,7 @@ import com.google.gson.reflect.TypeToken;
 import java.util.Map;
 
 /**
- * Created by Administrator on 2015/12/4.
+ * @author liuhongming
  */
 public class GsonUtil {
     private static GsonBuilder gsonBuilder;

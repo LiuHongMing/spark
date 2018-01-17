@@ -6,7 +6,7 @@ import com.google.common.collect.Maps;
 import com.github.tiger.kafka.common.URL;
 import com.github.tiger.kafka.consumer.ConsumerMain;
 import com.github.tiger.kafka.core.BizEntity;
-import com.github.tiger.kafka.core.MqConfigure;
+import com.github.tiger.kafka.core.RemoteConfigure;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  * @author liuhongming
  */
-public class KafkaService extends MqConfigure {
+public class KafkaService extends RemoteConfigure {
 
     /**
      * 主题历史版本
@@ -35,7 +35,7 @@ public class KafkaService extends MqConfigure {
         reload();
     }
 
-    public void reload() {
+    private void reload() {
         stop(invalidTopic());
         startup(validTopics());
     }

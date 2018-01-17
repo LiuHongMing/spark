@@ -6,6 +6,10 @@ import com.github.tiger.kafka.config.Constants;
 import com.github.tiger.kafka.registry.Registry;
 import com.github.tiger.kafka.registry.ZookeeperRegistry;
 import com.github.tiger.kafka.utils.PropertiesUtil;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.Options;
 
 import java.io.File;
 import java.util.Properties;
@@ -13,24 +17,42 @@ import java.util.Properties;
 /**
  * @author liuhongming
  */
-public class KafkaCurator {
+public class KafkaMain {
 
     private static Properties zkProps;
 
     static {
-        zkProps = PropertiesUtil.load("conf/zookeeper_conf.properties",
-                KafkaCurator.class.getClassLoader());
+        zkProps = PropertiesUtil.load("zookeeper_conf.properties",
+                KafkaMain.class.getClassLoader());
     }
 
     public static void main(String[] args) throws Exception {
+        String conf;
+
+        String requiredName = "conf";
+
+        Options options = new Options();
+        options.addOption(requiredName, true, "A configuration node name");
+
+        CommandLineParser parser = new DefaultParser();
+        CommandLine cmd = parser.parse(options, args);
+        if (!cmd.hasOption(requiredName)) {
+            throw new Exception("Need to configure the node name");
+        } else {
+            conf = cmd.getOptionValue(requiredName);
+            if (conf == null) {
+                throw new Exception("Configuration node name is null");
+            }
+        }
 
         String namespace = getZookeeperProperty(Constants.ZOOKEEPER_NAMESPACE);
         String environment = getZookeeperProperty(Constants.ZOOKEEPER_ENVIRONMENT);
         String site = getZookeeperProperty(Constants.ZOOKEEPER_SITE);
+
         String postfix = getZookeeperProperty(Constants.CONFIG_POSTFIX);
 
         String path = Joiner.on(File.separator).join(
-                new String[]{"", environment, site}).concat("." + postfix);
+                new String[]{"", environment, site, conf}).concat("." + postfix);
 
         Registry registry = new ZookeeperRegistry(namespace, null, null);
         URL subscribeUrl = new URL(path);
@@ -38,9 +60,9 @@ public class KafkaCurator {
         service.registry(registry).sync(subscribeUrl);
 
         while (true) {
-            synchronized (KafkaCurator.class) {
+            synchronized (KafkaMain.class) {
                 try {
-                    KafkaCurator.class.wait();
+                    KafkaMain.class.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

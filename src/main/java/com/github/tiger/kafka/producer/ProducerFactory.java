@@ -22,7 +22,7 @@ public class ProducerFactory {
     private static Properties configs;
 
     static {
-        String conf = "conf/kafka/producer.yaml";
+        String conf = "conf/producer.yaml";
         configs = PropertiesUtil.loadYaml(conf);
     }
 

@@ -1,10 +1,10 @@
 package com.github.tiger.kafka.config;
 
 import com.google.common.collect.Maps;
-import com.github.tiger.kafka.utils.GsonUtil;
 import com.github.tiger.kafka.common.URL;
 import com.github.tiger.kafka.listener.NotifyListener;
 import com.github.tiger.kafka.registry.Registry;
+import com.github.tiger.kafka.utils.GsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

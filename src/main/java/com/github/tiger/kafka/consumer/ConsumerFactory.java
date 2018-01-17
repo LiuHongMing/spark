@@ -24,7 +24,7 @@ public class ConsumerFactory {
     private static Properties configs;
 
     static {
-        String conf = "conf/kafka/consumer.yaml";
+        String conf = "conf/consumer.yaml";
         configs = PropertiesUtil.loadYaml(conf);
     }
 

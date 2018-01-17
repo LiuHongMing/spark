@@ -4,6 +4,8 @@ import com.google.common.collect.Maps;
 import com.github.tiger.kafka.config.Configurable;
 import com.github.tiger.kafka.registry.Registry;
 import org.apache.commons.beanutils.BeanUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
@@ -12,7 +14,9 @@ import java.util.Map;
 /**
  * @author liuhongming
  */
-public class MqConfigure extends Configurable {
+public class RemoteConfigure extends Configurable {
+
+    public static final Logger logger = LoggerFactory.getLogger(RemoteConfigure.class);
 
     private Map<String, BizEntity> validTopics = Maps.newHashMap();
 
@@ -20,10 +24,10 @@ public class MqConfigure extends Configurable {
 
     private Map<String, ?> configs = Maps.newHashMap();
 
-    public MqConfigure() {
+    public RemoteConfigure() {
     }
 
-    public MqConfigure(Registry registry) throws RegistryException {
+    public RemoteConfigure(Registry registry) throws RegistryException {
         super(registry);
     }
 
@@ -32,6 +36,7 @@ public class MqConfigure extends Configurable {
         this.configs = configs;
         compareAndWrap();
         wakeup();
+        logger.info(configs.toString());
     }
 
     public void wakeup() {}

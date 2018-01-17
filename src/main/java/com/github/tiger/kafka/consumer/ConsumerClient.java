@@ -2,7 +2,7 @@ package com.github.tiger.kafka.consumer;
 
 import com.google.common.collect.Lists;
 import com.github.tiger.kafka.common.Closeable;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;

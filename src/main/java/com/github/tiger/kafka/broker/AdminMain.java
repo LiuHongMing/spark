@@ -3,7 +3,7 @@ package com.github.tiger.kafka.broker;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.github.tiger.kafka.utils.PropertiesUtil;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.kafka.clients.admin.*;
 
 import java.util.*;
@@ -17,7 +17,7 @@ public class AdminMain {
     private static Properties configs;
 
     static {
-        String conf = "conf/kafka/broker.yaml";
+        String conf = "conf/broker.yaml";
         configs = PropertiesUtil.loadYaml(conf);
     }
 

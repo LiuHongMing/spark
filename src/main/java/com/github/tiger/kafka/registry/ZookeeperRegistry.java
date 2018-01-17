@@ -1,10 +1,10 @@
 package com.github.tiger.kafka.registry;
 
-import com.github.tiger.kafka.main.KafkaCurator;
 import com.github.tiger.kafka.common.URL;
 import com.github.tiger.kafka.config.Constants;
 import com.github.tiger.kafka.listener.NotifyListener;
-import org.apache.commons.lang.StringUtils;
+import com.github.tiger.kafka.main.KafkaMain;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
@@ -33,13 +33,13 @@ public class ZookeeperRegistry implements Registry {
 
     private static final Logger logger = LoggerFactory.getLogger(ZookeeperRegistry.class);
 
-    private static final String DEFAULT_CONNECT_STRING = KafkaCurator
+    private static final String DEFAULT_CONNECT_STRING = KafkaMain
             .getZookeeperProperty(Constants.ZOOKEEPER_CONNECT_STRING);
-    private static final String DEFAULT_NAMESPACE = KafkaCurator
+    private static final String DEFAULT_NAMESPACE = KafkaMain
             .getZookeeperProperty(Constants.ZOOKEEPER_NAMESPACE);
-    private static final int DEFAULT_CONNECTION_TIMEOUT = KafkaCurator
+    private static final int DEFAULT_CONNECTION_TIMEOUT = KafkaMain
             .getZookeeperProperty2Int(Constants.ZOOKEEPER_CONNECTION_TIMEOUT);
-    private static final int DEFAULT_SESSION_TIMEOUT = KafkaCurator
+    private static final int DEFAULT_SESSION_TIMEOUT = KafkaMain
             .getZookeeperProperty2Int(Constants.ZOOKEEPER_SESSION_TIMEOUT);
     private static final boolean DEFAULT_READ_ONLY = true;
 
