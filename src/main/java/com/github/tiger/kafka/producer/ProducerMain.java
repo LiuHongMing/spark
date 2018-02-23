@@ -15,12 +15,16 @@ public class ProducerMain {
     private static final Logger logger = LoggerFactory.getLogger(ProducerMain.class);
 
     public static void doSend(String topic, String key, String value) {
-        doSend(Arrays.asList(new ProducerRecord(topic, key, value)));
+        doSend(topic, null, key, value);
+    }
+
+    public static void doSend(String topic, Integer partition, String key, String value) {
+        doSend(Arrays.asList(new ProducerRecord(topic, partition, key, value)));
     }
 
     public static void doSend(List<ProducerRecord> batchList) {
-        batchList.forEach(record -> ProducerUtil.send(record.topic(),
-                (String) record.key(), (String) record.value()));
+        batchList.forEach(record -> ProducerUtil.async(record.topic(),
+                record.partition(), (String) record.key(), (String) record.value()));
     }
 
 }

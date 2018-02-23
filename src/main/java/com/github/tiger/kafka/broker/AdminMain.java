@@ -17,7 +17,7 @@ public class AdminMain {
     private static Properties configs;
 
     static {
-        String conf = "conf/broker.yaml";
+        String conf = "conf/broker.yml";
         configs = PropertiesUtil.loadYaml(conf);
     }
 

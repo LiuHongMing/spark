@@ -1,5 +1,5 @@
 
-### high
+# high
 
 bootstrap.servers:
         "kafka1:9092,kafka2:9092,kafka3:9092"
@@ -12,6 +12,16 @@ value.serializer:
 
 acks: "1"
 
-### medium
+retries: 0
+
+## 32M
+buffer.menory: 33554432
+
+# medium
+
+## 16K
+batch.size: 16384
 
 linger.ms: "1"
+
+

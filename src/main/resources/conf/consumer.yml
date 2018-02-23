@@ -22,4 +22,5 @@ enable.auto.commit:
         "false"
 
 auto.offset.reset:
-        "latest"
+#        "latest"
+        "earliest"

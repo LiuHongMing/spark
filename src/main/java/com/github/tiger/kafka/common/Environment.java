@@ -5,9 +5,6 @@ package com.github.tiger.kafka.common;
  */
 public abstract class Environment {
 
-    public Environment() {
-    }
-
     abstract String[] getDefaultProfiles();
 
 }

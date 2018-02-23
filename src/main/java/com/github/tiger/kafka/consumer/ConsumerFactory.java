@@ -24,7 +24,7 @@ public class ConsumerFactory {
     private static Properties configs;
 
     static {
-        String conf = "conf/consumer.yaml";
+        String conf = "conf/consumer.yml";
         configs = PropertiesUtil.loadYaml(conf);
     }
 

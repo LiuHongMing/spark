@@ -129,6 +129,13 @@ public class ConsumerClient implements Closeable {
             List<ConsumerRecord<String, String>> buffer = Lists.newArrayList();
             consumer.subscribe(this.topics);
             while (!isClosed()) {
+                /**
+                 * poll(timeout) 获取使用其中一个订阅/分配API指定的主题或分区的数据。
+                 *               在轮询数据之前未订阅任何主题或分区是错误的。
+                 *
+                 * timeout 如果数据在缓冲区中不可用，则花费在轮询中的时间（以毫秒为单位）。
+                 *         如果为0，则立即返回缓冲区中当前可用的任何记录，否则返回空。
+                 */
                 ConsumerRecords<String, String> records = consumer.poll(POOL_TIMEOUT);
                 for (ConsumerRecord<String, String> record : records) {
                     logger.info("Consumer received record: {}", record);

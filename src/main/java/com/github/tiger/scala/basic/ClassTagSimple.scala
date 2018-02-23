@@ -1,4 +1,4 @@
-package scala
+package com.github.tiger.scala.basic
 
 import scala.reflect.ClassTag
 

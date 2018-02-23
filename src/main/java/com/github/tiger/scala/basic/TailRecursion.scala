@@ -1,8 +1,9 @@
-package scala
+package com.github.tiger.scala.basic
 
 import scala.annotation.tailrec
 
-object TestTailRecursion {
+object TailRecursion {
+
   @tailrec
   def sum(n: Long, total: Long): Long = {
     if (n <= 0) total
@@ -13,4 +14,5 @@ object TestTailRecursion {
     val total = sum(10000000, 0)
     println(total)
   }
+
 }
