@@ -42,7 +42,7 @@ public class ConsumerTest {
         props.put("value.deserializer",
                 "org.apache.kafka.common.serialization.StringDeserializer");
         /**
-         * 自动偏移量重置
+         * 自动偏移量设置
          */
         props.put("auto.offset.reset", "latest");
         /**
@@ -53,9 +53,9 @@ public class ConsumerTest {
 
     @Test
     public void testReceive() {
-        List<String> topicList = Lists.newArrayList("benchmark-1-3-none");
+        List<String> topicList = Lists.newArrayList("zpcampus2");
         ConsumerClient client = new ConsumerClient();
-        client.receive("zpcampus", topicList);
+        client.receive("zpcampus-288", topicList);
 
         while (true) {
             synchronized (ConsumerTest.class) {
@@ -129,7 +129,18 @@ public class ConsumerTest {
         props.put("group.id", "zpcampus");
 
         KafkaConsumer consumer = new KafkaConsumer<>(props);
-        consumer.subscribe(Arrays.asList("zpcampus1"));
+        consumer.subscribe(Arrays.asList("zpcampus2"));
+
+        TopicPartition someTp = new TopicPartition("zpcampus2", 2);
+
+        /**
+         * 获取给定分区的*最后提交*的偏移量（理解这句话很关键，无论提交是由这个进程还是另一个进程发生的）。
+         * 这个抵消将被用作消费者在发生故障时的位置。
+         */
+        OffsetAndMetadata offsetAndMetadata = consumer.committed(someTp);
+        if (Objects.nonNull(offsetAndMetadata)) {
+            logger.info("Consumer committed OffsetAndMetadata: {}", offsetAndMetadata.toString());
+        }
 
         while (true) {
             /**
@@ -152,16 +163,21 @@ public class ConsumerTest {
         props.put("group.id", "zpcampus");
 
         KafkaConsumer consumer = new KafkaConsumer<>(props);
+        consumer.subscribe(Arrays.asList("zpcampus2"));
 
-        TopicPartition tp1 = new TopicPartition("zpcampus1", 1);
+        TopicPartition someTp = new TopicPartition("zpcampus2", 2);
 
         /**
-         * 获取给定分区的最后提交的偏移量（无论提交是由这个进程还是另一个进程发生的）。
+         * 获取给定分区的*最后提交*的偏移量（理解这句话很关键，无论提交是由这个进程还是另一个进程发生的）。
          * 这个抵消将被用作消费者在发生故障时的位置。
          */
-        OffsetAndMetadata offsetAndMetadata = consumer.committed(tp1);
+        OffsetAndMetadata offsetAndMetadata = consumer.committed(someTp);
         if (Objects.nonNull(offsetAndMetadata)) {
             logger.info("Consumer committed OffsetAndMetadata: {}", offsetAndMetadata.toString());
+        }
+
+        while(true) {
+
         }
     }
 }
