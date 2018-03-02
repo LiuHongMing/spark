@@ -22,7 +22,7 @@ public class KafkaMain {
     private static Properties zkProps;
 
     static {
-        zkProps = PropertiesUtil.load("zookeeper_conf.properties",
+        zkProps = PropertiesUtil.load("zookeeper.properties",
                 KafkaMain.class.getClassLoader());
     }
 
