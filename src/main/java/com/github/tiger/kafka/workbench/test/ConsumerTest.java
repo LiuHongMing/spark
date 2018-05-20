@@ -43,6 +43,10 @@ public class ConsumerTest {
                 "org.apache.kafka.common.serialization.StringDeserializer");
         /**
          * 自动偏移量设置
+         *
+         * earliest: offset存在时，从当前offset; offset不存在时，从头开始
+         *
+         * latest  : offset存在时，从当前offset; offset不存在时，从最新开始
          */
         props.put("auto.offset.reset", "latest");
         /**
@@ -53,9 +57,12 @@ public class ConsumerTest {
 
     @Test
     public void testReceive() {
-        List<String> topicList = Lists.newArrayList("zpcampus2");
-        ConsumerClient client = new ConsumerClient();
-        client.receive("zpcampus-288", topicList);
+        List<String> topicList = Lists.newArrayList("benchmark-1-0");
+        ConsumerClient client1 = new ConsumerClient();
+        client1.receive("consumer-666", topicList);
+
+        ConsumerClient client2 = new ConsumerClient();
+        client2.receive("consumer-888", topicList);
 
         while (true) {
             synchronized (ConsumerTest.class) {
@@ -75,11 +82,13 @@ public class ConsumerTest {
      */
     @Test
     public void testAssign() {
-        props.put("group.id", "zpcampus");
+        String topic = "benchmark-1-0";
+
+        props.put("group.id", "consumer-1000");
 
         KafkaConsumer consumer = new KafkaConsumer<>(props);
 
-        TopicPartition tp1 = new TopicPartition("zpcampus1", 3);
+        TopicPartition tp1 = new TopicPartition(topic, 3);
         /**
          * 手动分配主题分区列表给消费端
          */

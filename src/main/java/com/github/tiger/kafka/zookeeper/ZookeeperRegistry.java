@@ -1,9 +1,10 @@
-package com.github.tiger.kafka.registry;
+package com.github.tiger.kafka.zookeeper;
 
 import com.github.tiger.kafka.common.URL;
 import com.github.tiger.kafka.config.Constants;
 import com.github.tiger.kafka.listener.NotifyListener;
 import com.github.tiger.kafka.main.KafkaMain;
+import com.github.tiger.kafka.registry.Registry;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
@@ -33,6 +34,8 @@ public class ZookeeperRegistry implements Registry {
 
     private static final Logger logger = LoggerFactory.getLogger(ZookeeperRegistry.class);
 
+    private final static int DEFAULT_ZOOKEEPER_PORT = 2181;
+
     private static final String DEFAULT_CONNECT_STRING = KafkaMain
             .getZookeeperProperty(Constants.ZOOKEEPER_CONNECT_STRING);
     private static final String DEFAULT_NAMESPACE = KafkaMain
@@ -51,7 +54,7 @@ public class ZookeeperRegistry implements Registry {
     private String auth;
 
     private URL url;
-    private ZkWatcher watcher;
+    private ZookeeperWatcher watcher;
     private NotifyListener listener;
     private CuratorFramework client;
 
@@ -126,7 +129,7 @@ public class ZookeeperRegistry implements Registry {
     @Override
     public void subscribe(URL url) {
         this.url = url;
-        this.watcher = new ZkWatcher(this);
+        this.watcher = new ZookeeperWatcher(this);
         String path = url.getPath();
         try {
             watched(path);

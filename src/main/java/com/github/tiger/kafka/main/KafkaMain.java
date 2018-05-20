@@ -4,7 +4,7 @@ import com.google.common.base.Joiner;
 import com.github.tiger.kafka.common.URL;
 import com.github.tiger.kafka.config.Constants;
 import com.github.tiger.kafka.registry.Registry;
-import com.github.tiger.kafka.registry.ZookeeperRegistry;
+import com.github.tiger.kafka.zookeeper.ZookeeperRegistry;
 import com.github.tiger.kafka.utils.PropertiesUtil;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;

@@ -1,4 +1,4 @@
-package com.github.tiger.kafka.registry;
+package com.github.tiger.kafka.zookeeper;
 
 import com.github.tiger.kafka.common.URL;
 import com.github.tiger.kafka.listener.NotifyListener;
@@ -13,16 +13,16 @@ import org.slf4j.LoggerFactory;
 /**
  * @author liuhongming
  */
-public class ZkWatcher implements NodeCacheListener,
+public class ZookeeperWatcher implements NodeCacheListener,
         PathChildrenCacheListener {
 
-    private static final Logger logger = LoggerFactory.getLogger(ZkWatcher.class);
+    private static final Logger logger = LoggerFactory.getLogger(ZookeeperWatcher.class);
 
     private CuratorFramework client;
     private URL url;
     private NotifyListener listener;
 
-    public ZkWatcher(ZookeeperRegistry registry) {
+    public ZookeeperWatcher(ZookeeperRegistry registry) {
         this.client = registry.getClient();
         this.url = registry.getURL();
         this.listener = registry.getListener();

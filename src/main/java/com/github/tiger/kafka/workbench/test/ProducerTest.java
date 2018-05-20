@@ -51,11 +51,11 @@ public class ProducerTest {
 
     @Test
     public void testSend() {
-        int num = 100;
+        String topic = "benchmark-1-1";
+        int num = 10;
         for (int i = 0; i < num; i++) {
-            ProducerMain.doSend("zpcampus1", 3, "campus", "hehe");
+            ProducerMain.doSend(topic, 3, "hello", "world");
         }
-
         while (true) {
             synchronized (ProducerTest.class) {
                 try {

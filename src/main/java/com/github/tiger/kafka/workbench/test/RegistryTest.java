@@ -1,6 +1,6 @@
 package com.github.tiger.kafka.workbench.test;
 
-import com.github.tiger.kafka.registry.ZookeeperRegistry;
+import com.github.tiger.kafka.zookeeper.ZookeeperRegistry;
 import org.junit.Before;
 import org.junit.Test;
 
