@@ -34,8 +34,6 @@ public class ZookeeperRegistry implements Registry {
 
     private static final Logger logger = LoggerFactory.getLogger(ZookeeperRegistry.class);
 
-    private final static int DEFAULT_ZOOKEEPER_PORT = 2181;
-
     private static final String DEFAULT_CONNECT_STRING = KafkaMain
             .getZookeeperProperty(Constants.ZOOKEEPER_CONNECT_STRING);
     private static final String DEFAULT_NAMESPACE = KafkaMain

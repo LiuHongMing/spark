@@ -6,7 +6,8 @@ import org.apache.spark.streaming.scheduler.StreamInputInfo
 
 import scala.reflect.ClassTag
 
-class CustomInputStream[T: ClassTag](_ssc: StreamingContext, input: Seq[Seq[T]], numPartitions: Int)
+class CustomInputStream[T: ClassTag](_ssc: StreamingContext,
+                                     input: Seq[Seq[T]], numPartitions: Int)
   extends InputDStream[T](_ssc) {
 
   def start() {}

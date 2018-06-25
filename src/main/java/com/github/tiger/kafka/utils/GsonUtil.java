@@ -11,6 +11,7 @@ import java.util.Map;
  * @author liuhongming
  */
 public class GsonUtil {
+
     private static GsonBuilder gsonBuilder;
 
     static {
@@ -29,8 +30,9 @@ public class GsonUtil {
     public static Map<String, Object> json2Map(String json) {
 
         Gson g = gsonBuilder.create();
-        Map<String, Object> map = g.fromJson(json, new TypeToken<Map<String, Object>>() {
-        }.getType());
+        Map<String, Object> map = g.fromJson(json,
+                new TypeToken<Map<String, Object>>() {
+                }.getType());
         return map;
     }
 
