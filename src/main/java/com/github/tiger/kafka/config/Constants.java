@@ -12,6 +12,8 @@ public class Constants {
     public static final String ZOOKEEPER_SESSION_TIMEOUT = "zookeeper.sessionTimeout";
     public static final String ZOOKEEPER_CONNECTION_TIMEOUT = "zookeeper.connectionTimeout";
 
+    public static final String CONFIG_POSTFIX = "config.postfix";
+
     public static final String DEFAULT_HTTP_DATA_KEY = "data";
 
 }

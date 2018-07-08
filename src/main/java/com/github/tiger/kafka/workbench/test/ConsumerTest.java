@@ -46,7 +46,7 @@ public class ConsumerTest {
          *
          * earliest: offset存在时，从当前offset; offset不存在时，从头开始
          *
-         * latest  : offset存在时，从当前offset; offset不存在时，从最新开始
+         * latest: offset存在时，从当前offset; offset不存在时，从最新开始
          */
         props.put("auto.offset.reset", "latest");
         /**
