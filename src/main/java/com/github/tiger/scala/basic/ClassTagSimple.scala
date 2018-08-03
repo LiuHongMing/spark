@@ -1,6 +1,7 @@
 package com.github.tiger.scala.basic
 
 import scala.reflect.ClassTag
+import scala.reflect.runtime.universe._
 
 class MyType[T]
 
@@ -27,4 +28,12 @@ object TestClassTag {
       println("Some other type")
   }
 
+  // implicit m: ClassTag[T] 改成implicit m: TypeTag[T]也是可以的
+  def manif3[T](x: List[T])(implicit m: TypeTag[T]) = {
+    println(x)
+  }
+
+  def main(args: Array[String]): Unit = {
+    manif3(List("Scala", 3))
+  }
 }

@@ -1,13 +1,15 @@
-package com.github.tiger.spark.particular;
+package com.github.tiger.spark.sql;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.SparkContext;
-import org.apache.spark.sql.*;
-import org.apache.spark.storage.StorageLevel;
+import org.apache.spark.sql.AnalysisException;
+import org.apache.spark.sql.Dataset;
+import org.apache.spark.sql.Row;
+import org.apache.spark.sql.SparkSession;
 import org.apache.spark.streaming.Duration;
 import org.apache.spark.streaming.StreamingContext;
 
-import java.io.*;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 

@@ -18,12 +18,12 @@ object SparkSQL {
       .getOrCreate()
 
     // DataFrame
-    val sample = cp + "people.json"
+    val sample = cp + "job.json"
     val df = spark.read.json(sample)
 
-    df.createOrReplaceTempView("people")
+    df.createOrReplaceTempView("job")
 
-    val sqlDF = spark.sql("select * from people")
+    val sqlDF = spark.sql("select * from job ")
     sqlDF.show()
 
   }

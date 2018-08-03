@@ -3,7 +3,9 @@ package com.github.tiger.scala.collections
 object Collections {
 
   def main(args: Array[String]): Unit = {
-    // Traversable
+    /**
+      * Traversable
+      */
     val xt = Traversable(1, 2, 3)
     val yt = Traversable(4, 5, 6)
 
@@ -28,13 +30,17 @@ object Collections {
     println(partitions._1) // List(2, 4, 6)
     println(partitions._2) // List(1, 3, 5)
 
-    // Iterable
+    /**
+      * Iterable
+      */
     val xi = Iterable("a", "b", "c")
     val yi = Iterable("x", "y", "z")
     val iterable = xi ++ yi
     println(iterable.toString())
 
-    // List
+    /**
+      * List
+      */
     val xl = List(1, 2, 3)
     val yl = List(4, 5, 6)
 
