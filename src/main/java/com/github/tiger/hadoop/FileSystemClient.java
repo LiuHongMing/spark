@@ -1,4 +1,4 @@
-package com.github.tiger.spark.started.hadoop;
+package com.github.tiger.hadoop;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -12,7 +12,7 @@ import java.net.URI;
 
 /**
  * FileSystem 工具类
- *
+ * <p>
  * 实现对 local、hdfs 文件操作
  *
  * @author liuhongming
@@ -21,9 +21,7 @@ public class FileSystemClient {
 
     private static final Logger logger = LoggerFactory.getLogger(FileSystemClient.class);
 
-    public void copyFileToHdfs(Configuration conf, String src, String dest) {
-
-        IOException processException = null;
+    public static void copyFileToHdfs(Configuration conf, String src, String dest) {
 
         try (
                 InputStream in = new BufferedInputStream(new FileInputStream(src));
@@ -38,9 +36,6 @@ public class FileSystemClient {
 
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
-            processException = e;
-        } finally {
-
         }
     }
 

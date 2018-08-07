@@ -38,8 +38,10 @@ public class JavaJobSparkSql {
     }
 
     private static void runBasicDataFrame(SparkSession spark) {
-        String cp = Thread.currentThread().getContextClassLoader().getResource("").getPath();
-        String sample = cp + "job.json";
+        String sample = Thread.currentThread()
+                .getContextClassLoader()
+                .getResource("job.json")
+                .getPath();
         long start = System.currentTimeMillis();
         Dataset<Row> df = spark.read().json(sample);
         long records = df.count();

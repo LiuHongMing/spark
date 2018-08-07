@@ -1,13 +1,9 @@
-package spark
+package com.github.tiger.spark.streaming.kafka
 
 import kafka.serializer.StringDecoder
-import org.apache.hadoop.io.{IntWritable, Text}
-import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat
+import org.apache.spark.SparkConf
 import org.apache.spark.streaming.kafka.KafkaUtils
 import org.apache.spark.streaming.{Seconds, StreamingContext}
-import org.apache.spark.{SparkConf, SparkContext}
-
-import scala.collection.JavaConverters._
 
 object KafkaWordCount {
 

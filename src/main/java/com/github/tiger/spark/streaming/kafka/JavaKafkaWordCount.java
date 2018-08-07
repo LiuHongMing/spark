@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package spark;
+package com.github.tiger.spark.streaming.kafka;
 
 import java.util.Arrays;
 import java.util.Iterator;
