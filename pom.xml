@@ -14,11 +14,6 @@
             <name>Scala-tools Maven2 Repository</name>
             <url>http://scala-tools.org/repo-releases</url>
         </repository>
-        <repository>
-            <id>zhaopin</id>
-            <name>zhaopin</name>
-            <url>http://gradle-maven.zhaopin.com:8081/nexus/content/repositories/snapshots</url>
-        </repository>
     </repositories>
 
     <pluginRepositories>
