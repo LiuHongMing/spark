@@ -30,7 +30,7 @@ public class FileSystemClient {
 
                 OutputStream out = fs.create(new Path(dest),
 
-                        () -> logger.info("设定缓存区大小容量，完成上传文件！"));) {
+                        () -> logger.info("设定缓存区大小容量，完成上传文件！"))) {
 
             IOUtils.copyBytes(in, out, 4096, true);
 
