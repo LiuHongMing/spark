@@ -30,7 +30,10 @@ object QueueCompanion {
 
   def main(args: Array[String]) {
     val queue = QueueCompanion(1, 2, 3)
-    print(queue.head)
+    // 1
+    println(queue.head)
+    // 4
+    println(queue.append(4).tail.head)
   }
 
 }

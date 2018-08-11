@@ -41,7 +41,7 @@ object BaseEx {
       case _ if calc.brand == "HP" => "financial"
     }
   }
-
+  
 }
 
 class Foo {}

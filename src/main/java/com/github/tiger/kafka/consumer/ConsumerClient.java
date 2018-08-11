@@ -60,7 +60,7 @@ public class ConsumerClient implements Closeable {
 
     public static final String DEFAULT_CLIENT_NAME = "client";
 
-    public static final String DEFAULT_GROUP_ID = "zpcampus";
+    public static final String DEFAULT_GROUP_ID = "mygroup";
 
     public ConsumerClient() {
         this(DEFAULT_CLIENT_NAME, MIN_BATCH_SIZE, NO_HANDLE);

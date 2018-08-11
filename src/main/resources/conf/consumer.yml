@@ -24,3 +24,9 @@ enable.auto.commit:
 auto.offset.reset:
 #        "latest"
         "earliest"
+
+max.poll.interval.ms:
+        300000
+
+max.poll.records:
+        500

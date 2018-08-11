@@ -1,5 +1,7 @@
 package com.github.tiger.kafka.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.core.io.ClassPathResource;
 
@@ -13,6 +15,10 @@ import java.util.Properties;
  */
 public class PropertiesUtil {
 
+    private static final Logger logger = LoggerFactory.getLogger(PropertiesUtil.class);
+
+    private PropertiesUtil() {}
+
     public static Properties load(String resource, ClassLoader classLoader) {
         if (Objects.isNull(classLoader)) {
             classLoader = Thread.currentThread().getContextClassLoader();
@@ -22,7 +28,7 @@ public class PropertiesUtil {
         try {
             props.load(in);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
         }
         return props;
     }

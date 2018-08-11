@@ -1,4 +1,4 @@
-package com.github.tiger.spark.started.scala
+package com.github.tiger.spark.rdd
 
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
@@ -15,21 +15,26 @@ object Getting {
   val sc = new SparkContext(conf)
 
   def main(args: Array[String]): Unit = {
-    val data = List(1, 2, 3, 4, 5)
-    println(data)
-
-    val distData = parallelize(data)
-    printf("RDD.count()\n%s\n", distData.count())
+//    val data = List(1, 2, 3, 4, 5)
+//    println(data)
+//
+//    val distData = parallelize(data)
+//    printf("RDD.count()\n%s\n", distData.count())
 
     // transformation
-    map(distData)
-    reduceByKey()
-    filter()
+//    map(distData)
+//    groupByKey()
+//    reduceByKey()
+//    filter()
+
+    flatMapValues()
 
     // action
-    reduce(distData)
+//    reduce(distData)
 
   }
+
+  // ========== create rdd ==========
 
   def parallelize(data: List[Int]): RDD[Int] = {
     // 分布式数据集
@@ -45,6 +50,21 @@ object Getting {
     val result = rdd.map(addOne)
     result.foreach(x => printf("%s ", x))
     println()
+    result
+  }
+
+  def groupByKey(): RDD[(Int, Iterable[Int])] = {
+    val data = List((1, 2), (3, 4), (3, 6))
+    // 分布式数据集
+    val distData = sc.parallelize(data, 2)
+    val result = distData.groupByKey()
+    printf("RDD.groupByKey()\n%s\n", data)
+    result.foreach((x: (Int, Iterable[Int])) => {
+      println(x._1, ":")
+      for (i <- x._2) {
+        println(i)
+      }
+    })
     result
   }
 

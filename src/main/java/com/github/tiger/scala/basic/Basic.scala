@@ -61,7 +61,8 @@ class Calculator(val brand: String, val price: Int) {
   * @param brand
   * @param price
   */
-class ScientificCalculator(brand: String, price: Int) extends Calculator(brand, price) {
+class ScientificCalculator(brand: String, price: Int)
+  extends Calculator(brand, price) {
   def log(m: Double, base: Double) = math.log(m) / math.log(base)
 }
 
@@ -71,7 +72,8 @@ class ScientificCalculator(brand: String, price: Int) extends Calculator(brand, 
   * @param brand
   * @param price
   */
-class EvenMoreScientificCalculator(brand: String, price: Int) extends ScientificCalculator(brand, price) {
+class EvenMoreScientificCalculator(brand: String, price: Int)
+  extends ScientificCalculator(brand, price) {
   def log(m: Int): Double = log(m, math.exp(m))
 }
 

@@ -54,6 +54,14 @@ public class ConsumerTest {
          * 关闭自动提交偏移量
          */
         props.put("enable.auto.commit", "false");
+        /**
+         *
+         */
+        props.put("max.poll.interval.ms", "300000");
+        /**
+         *
+         */
+        props.put("max.poll.records", "100");
     }
 
     @Test

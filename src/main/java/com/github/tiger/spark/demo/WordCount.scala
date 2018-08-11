@@ -1,5 +1,6 @@
 package com.github.tiger.spark.demo
 
+import org.apache.hadoop.mapreduce.Partitioner
 import org.apache.spark.{SparkConf, SparkContext}
 
 object WordCount {
@@ -16,7 +17,10 @@ object WordCount {
     val counts = textFile.flatMap(line => line.split(" "))
       .map(word => (word, 1))
       .reduceByKey(_ + _)
-    counts.saveAsTextFile(args(1))
+
+    sc.hadoopConfiguration.setClass("mapreduce.job.partitioner.class",
+      classOf[MyPartitioner], classOf[Partitioner[_, _]])
+    counts.saveAsNewAPIHadoopDataset(sc.hadoopConfiguration)
 
     sc.stop();
   }
