@@ -27,8 +27,8 @@ class JobReceiver()
   private def receive(): Unit = {
     var readItem: String = null
     try {
-      val in = new FileInputStream("/Users/liuhongming/" +
-        "Documents/iCoding/workspace/java/spark/src/main/resources/job.json")
+      val path = Thread.currentThread.getContextClassLoader.getResource("job.json").getPath
+      val in = new FileInputStream(path)
       val reader = new BufferedReader(new InputStreamReader(in, "UTF-8"))
       readItem = reader.readLine()
 

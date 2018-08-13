@@ -1,4 +1,4 @@
-package com.github.tiger.scala.json
+package com.github.tiger.scala.util
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.scala.DefaultScalaModule

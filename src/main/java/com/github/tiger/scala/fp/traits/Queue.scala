@@ -1,4 +1,4 @@
-package com.github.tiger.scala.traits
+package com.github.tiger.scala.fp.traits
 
 trait Queue[T] {
   def head: T

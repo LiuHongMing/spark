@@ -1,4 +1,4 @@
-package com.github.tiger.scala.collections
+package com.github.tiger.scala.lesson.collections
 
 object Collections {
 

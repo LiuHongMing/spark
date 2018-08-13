@@ -1,4 +1,4 @@
-package com.github.tiger.scala.basic
+package com.github.tiger.scala.lang
 
 import scala.annotation.tailrec
 

@@ -1,6 +1,6 @@
 package com.github.tiger.spark.streaming
 
-import com.github.tiger.scala.json.JsonUtil
+import com.github.tiger.scala.util.JsonUtil
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.apache.spark.{SparkConf, SparkContext}
 

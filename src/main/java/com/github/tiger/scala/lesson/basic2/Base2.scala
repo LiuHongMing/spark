@@ -1,6 +1,8 @@
-package com.github.tiger.scala.basic
+package com.github.tiger.scala.lesson.basic2
 
-object BaseEx {
+import com.github.tiger.scala.lesson.basic.Calculator
+
+object Base2 {
 
   def main(args: Array[String]): Unit = {
     println(Time.currentCount())
@@ -41,7 +43,7 @@ object BaseEx {
       case _ if calc.brand == "HP" => "financial"
     }
   }
-  
+
 }
 
 class Foo {}
@@ -63,12 +65,6 @@ object Time {
     count += 1
     count
   }
-}
-
-class Bar(foo: String)
-
-object Bar {
-  def apply(foo: String): Bar = new Bar(foo)
 }
 
 /**
