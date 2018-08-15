@@ -1,4 +1,4 @@
-package com.github.tiger.spark.streaming
+package com.github.tiger.spark.streaming.basic
 
 import com.github.tiger.scala.util.JsonUtil
 import org.apache.spark.streaming.{Seconds, StreamingContext}

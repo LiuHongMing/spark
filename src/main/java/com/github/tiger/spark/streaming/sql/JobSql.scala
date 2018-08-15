@@ -1,8 +1,8 @@
-package com.github.tiger.spark.streaming
+package com.github.tiger.spark.streaming.sql
 
+import com.github.tiger.spark.streaming.basic.JobReceiver
 import com.github.tiger.spark.util.SparkSessionSingleton
 import org.apache.spark.rdd.RDD
-import org.apache.spark.sql.SparkSession
 import org.apache.spark.streaming.{Seconds, StreamingContext, Time}
 import org.apache.spark.{SparkConf, SparkContext}
 
@@ -17,6 +17,7 @@ object JobSql {
   case class Job(id: String, city_id: String, job_type: String, job_nature: String)
 
   def main(args: Array[String]): Unit = {
+
     val conf = new SparkConf()
     conf.setMaster("local[2]").setAppName("Job Streaming")
 

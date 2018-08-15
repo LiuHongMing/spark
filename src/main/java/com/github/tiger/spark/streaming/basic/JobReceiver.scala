@@ -1,4 +1,4 @@
-package com.github.tiger.spark.streaming
+package com.github.tiger.spark.streaming.basic
 
 import java.io.{BufferedReader, FileInputStream, InputStreamReader}
 import java.util.concurrent.TimeUnit

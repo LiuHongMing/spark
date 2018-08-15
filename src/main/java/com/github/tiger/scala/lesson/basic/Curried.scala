@@ -7,7 +7,7 @@ package com.github.tiger.scala.lesson.basic
   *
   * 类型是currying类型
   */
-object Currying {
+object Curried {
 
   def main(args: Array[String]): Unit = {
     println(sum(1)(2))

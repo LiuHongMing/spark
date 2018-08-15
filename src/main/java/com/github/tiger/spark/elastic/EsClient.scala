@@ -1,6 +1,7 @@
 package com.github.tiger.spark.elastic
 
 import org.apache.commons.lang3.RandomStringUtils
+import org.apache.spark.internal.Logging
 import org.apache.spark.storage.StorageLevel
 import org.apache.spark.{SparkConf, SparkContext}
 import org.elasticsearch.spark._
@@ -8,7 +9,7 @@ import org.elasticsearch.spark.rdd.EsSpark
 
 import scala.collection.Map
 
-object EsClient {
+object EsClient extends App with Logging {
 
   val conf = new SparkConf()
     .setAppName("Spark Elasticsearch example").setMaster("local")
@@ -16,9 +17,7 @@ object EsClient {
     .set("es.port", "9200")
     .set("es.index.auto.create", "true")
 
-  def main(args: Array[String]): Unit = {
-    EsClient.read
-  }
+  EsClient.read
 
   def read = {
     val sc = new SparkContext(conf)
@@ -71,7 +70,7 @@ object EsClient {
     }
     behaviorRDD.foreach(f)
 
-    println("-----", "transformation _ map", "-----")
+    logInfo("----- transformation _ map -----")
 
     val behaviorGroupRDD = behaviorRDD.groupByKey()
     behaviorGroupRDD.foreach((a: (String, Iterable[Behavior])) => {
@@ -83,7 +82,7 @@ object EsClient {
       }
     })
 
-    println("-----", "transformation _ groupByKey", "-----")
+    logInfo("----- transformation _ groupByKey -----")
 
     behaviorGroupRDD.cache()
 

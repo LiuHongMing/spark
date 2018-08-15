@@ -10,7 +10,7 @@ import java.net.URISyntaxException;
 /**
  * @author liuhongming
  */
-public class SubmitJobToSpark {
+public class SubmitToSpark {
 
     public static void main(String[] args) throws IOException, URISyntaxException {
 
@@ -41,6 +41,8 @@ public class SubmitJobToSpark {
                  * GlusterFS等共享的大型的 file/JAR。
                 */
                 "--jars", "local:/data/jars/jedis-2.8.1.jar",
+                "--packages", "org.apache.spark:spark-streaming-kafka-0-10_2.11:2.0.2",
+                "--repositories", "http://172.16.230.111:8081/nexus/content/groups/public",
                 // 应用包
                 "hdfs://spark-220:9000/jars/campus-spark-1.0.jar",
                 // 应用参数

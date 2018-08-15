@@ -1,4 +1,4 @@
-package com.github.tiger.scala.lang
+package com.github.tiger.scala.lang.recursive
 
 import scala.annotation.tailrec
 
