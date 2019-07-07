@@ -6,7 +6,6 @@
 *.db
 *.class
 package/
-classes/
 target/
 build/
 out/

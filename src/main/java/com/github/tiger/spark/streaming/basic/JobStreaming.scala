@@ -1,8 +1,8 @@
 package com.github.tiger.spark.streaming.basic
 
-import com.github.tiger.scala.util.JsonUtil
+import com.github.tiger.scala.util.JacksonUtil
+import org.apache.spark.SparkConf
 import org.apache.spark.streaming.{Seconds, StreamingContext}
-import org.apache.spark.{SparkConf, SparkContext}
 
 /**
   * 功能：职位统计
@@ -16,11 +16,12 @@ object JobStreaming {
   case class Job(id: String, city_id: String, job_type: String, job_nature: String)
 
   def main(args: Array[String]): Unit = {
-    val sparkConf = new SparkConf()
-    sparkConf.setMaster("local[*]").setAppName("Job Streaming")
 
-    val sc = new SparkContext(sparkConf)
-    val ssc = new StreamingContext(sc, Seconds(1))
+    val conf = new SparkConf()
+      .setMaster("local[*]")
+      .setAppName("Job Streaming")
+
+    val ssc = new StreamingContext(conf, Seconds(1))
 
     val lines = ssc.receiverStream(new JobReceiver())
 
@@ -28,7 +29,7 @@ object JobStreaming {
 
     // => Map[String, Any]
     val jsonData = lines.map(x => {
-        JsonUtil.readValue(x, classOf[Map[String, Any]])
+      JacksonUtil.readValue(x, classOf[Map[String, Any]])
     })
 
     // => Job

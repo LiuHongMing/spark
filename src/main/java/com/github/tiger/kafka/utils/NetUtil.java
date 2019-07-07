@@ -12,7 +12,8 @@ public class NetUtil {
 
     private static final Logger log = LoggerFactory.getLogger(NetUtil.class);
 
-    public static InetSocketAddress newSocket(String host, Integer port) throws Exception {
+    public static InetSocketAddress newSocket(String host, Integer port)
+            throws Exception {
         if (host == null || port == null) {
             throw new Exception("Invalid host or port");
         }

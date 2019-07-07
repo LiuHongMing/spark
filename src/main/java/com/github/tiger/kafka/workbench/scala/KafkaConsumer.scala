@@ -2,7 +2,7 @@ package com.github.tiger.kafka.workbench.scala
 
 import java.util
 
-import org.apache.kafka.clients.consumer.KafkaConsumer
+import org.apache.kafka.clients.consumer._
 
 import scala.collection.JavaConverters._
 
@@ -30,6 +30,8 @@ object KafkaConsumer extends App {
     for (record <- records.asScala) {
       println("----------", record.key(), record.value(), "----------")
     }
+    consumer.commitSync()
+
   }
 
   consumer.close()

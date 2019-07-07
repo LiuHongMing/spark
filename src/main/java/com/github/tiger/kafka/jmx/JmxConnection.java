@@ -24,7 +24,7 @@ public class JmxConnection {
     /**
      * 默认连接的ip和端口号
      */
-    private String ipAndPort = "localhost:9999";
+    private String ipAndPort = "localhost:9988";
 
     public JmxConnection(String ipAndPort) {
         this.ipAndPort = ipAndPort;

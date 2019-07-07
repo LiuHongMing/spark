@@ -54,8 +54,6 @@ object DirectStreaming extends App {
     (record.value(), weight())
   })
 
-  val windowStream = pairStream.countByWindow(Seconds(10), Seconds(5))
-
   val printFunc = (r: RDD[(String, Double)]) => {
     val collect = r.collect()
     for (i <- collect) {
@@ -65,13 +63,16 @@ object DirectStreaming extends App {
 
   pairStream.foreachRDD(printFunc)
 
+  val windowStream = pairStream.countByWindow(Seconds(10), Seconds(5))
+
+  windowStream.print(100)
+
   val timeInMs = System.currentTimeMillis()
   val prefix = s"hdfs://spark-220:9000/streaming/$timeInMs"
   val suffix = "kafka"
   pairStream.saveAsTextFiles(prefix, suffix)
 
   ssc.start()
-
   ssc.awaitTermination()
 
 }
