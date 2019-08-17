@@ -3,6 +3,9 @@ package com.github.tiger.spark.hbase
 import java.io.IOException
 
 import org.apache.hadoop.conf.Configuration
+import org.apache.hadoop.hbase.client.{Admin, ConnectionFactory}
+import org.apache.hadoop.hbase.io.compress.Compression.Algorithm
+import org.apache.hadoop.hbase.{HBaseConfiguration, HColumnDescriptor, HTableDescriptor, TableName}
 
 object HBaseUtil {
 

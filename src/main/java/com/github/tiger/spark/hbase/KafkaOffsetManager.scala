@@ -2,6 +2,9 @@ package com.github.tiger.spark.hbase
 
 import kafka.utils.ZkUtils
 import org.I0Itec.zkclient.{ZkClient, ZkConnection}
+import org.apache.hadoop.hbase.{HBaseConfiguration, TableName}
+import org.apache.hadoop.hbase.client.{ConnectionFactory, Put, Scan}
+import org.apache.hadoop.hbase.util.Bytes
 import org.apache.kafka.common.TopicPartition
 import org.apache.spark.streaming.Time
 import org.apache.spark.streaming.kafka010.OffsetRange
