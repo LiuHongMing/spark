@@ -3,6 +3,7 @@ package com.github.tiger.spark.sql
 import java.sql.Timestamp
 
 import com.alibaba.fastjson.JSON
+import com.github.tiger.spark.hbase.HBaseReadWriter
 import com.github.tiger.spark.streaming.realm.UserBehaviors
 import com.github.tiger.spark.util.FastJsonUtil
 import org.apache.hadoop.hbase.TableName

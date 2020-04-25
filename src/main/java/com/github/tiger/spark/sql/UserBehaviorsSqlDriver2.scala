@@ -3,6 +3,11 @@ package com.github.tiger.spark.sql
 import java.sql.Timestamp
 
 import com.alibaba.fastjson.JSON
+import com.github.tiger.spark.streaming.realm.UserBehaviors
+import com.github.tiger.spark.util.FastJsonUtil
+import org.apache.hadoop.hbase.TableName
+import org.apache.hadoop.hbase.client.{Connection, Put}
+import org.apache.hadoop.hbase.util.Bytes
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.expressions.{MutableAggregationBuffer, UserDefinedAggregateFunction}
 import org.apache.spark.sql.types.{StructField, _}

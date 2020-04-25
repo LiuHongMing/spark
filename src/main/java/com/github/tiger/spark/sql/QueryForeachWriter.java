@@ -1,7 +1,7 @@
 package com.github.tiger.spark.sql;
 
-import com.zpcampus.spark.hbase.HBaseReadWriter;
-import com.zpcampus.spark.util.Md5Util;
+import com.github.tiger.spark.hbase.HBaseReadWriter;
+import com.github.tiger.spark.util.Md5Util;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.TableName;

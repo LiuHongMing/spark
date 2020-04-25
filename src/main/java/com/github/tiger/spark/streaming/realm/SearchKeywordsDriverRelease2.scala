@@ -4,8 +4,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 import com.alibaba.fastjson.JSON
-import com.github.tiger.scala.util.Md5Util
-import com.github.tiger.spark.util.FastJsonUtil
+import com.github.tiger.spark.util.{FastJsonUtil, Md5Util}
 import org.apache.kafka.common.serialization.StringDeserializer
 import org.apache.spark.SparkConf
 import org.apache.spark.streaming._
